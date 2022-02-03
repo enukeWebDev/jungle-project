@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
+  # Adding routes to About Us Page
+  get '/about', to: 'about#index'
+
   resources :orders, only: [:create, :show]
 
   namespace :admin do
