@@ -4,6 +4,8 @@
     <h1>My Cart</h1>
   </header>
 
+<!-- If cart is NOT empty - execute the block of code - otherwise execute the else statement below -->
+  <% if enhanced_cart.any? %>
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -25,7 +27,8 @@
             TOTAL:
           </th>
           <th>
-            <%= cart_subtotal_cents / 100.0 %>
+          <!-- Add the humanized_money_with_symbol to format the the Total Price -->
+            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
           </th>
         </tr>
       </tfoot>
@@ -49,4 +52,10 @@
     </div>
   </div>
 
+  <% else %>
+
+  <div class="alert alert-warning" role="alert">
+    Sorry... Your cart is EMPTY! <%= link_to "Please start shopping...", root_path %>
+  </div>
+  <% end %>
 </section>
