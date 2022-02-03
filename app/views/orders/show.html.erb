@@ -5,7 +5,7 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h3>Thank you for your order!</h3>
     <p>Here's what's coming your way...</p>
 
     <div class="panel panel-default items">
@@ -20,16 +20,27 @@
         </thead>
         <tbody>
           <% @order.line_items.each do |item| %>
-           
+            <%= render "list_order", product: item.product, qty: item.quantity %>
           <% end %>
 
           <tr class="order-summary">
             <td colspan="4"><strong>Total Amount:</strong></td>
-
+            <td>
+              <strong>
+                <%= humanized_money_with_symbol(@order.total_cents / 100.0) %>
+              </strong>
+            </td>
           </tr>
         </tbody>
       </table>
 
+    </div>
+
+    <div>
+      <p>
+        Email:
+        <%= @order.email %>
+      </p>
     </div>
   </div>
 
