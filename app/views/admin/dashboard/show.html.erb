@@ -1,2 +1,22 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<%# <h1>Admin::Dashboard#show</h1>
+<p>Find me in app/views/admin/dashboard/show.html.erb</p> %>
+
+<%# Adding a feature to add counts on the Admin dashboard %>
+
+<section class="admin-dashboard-show">
+  <header>
+    <h1>Dashboard - Check Detailed Information of Products</h1>
+  </header>
+
+  <div class="row">
+    <div class="card dashboard col-sm-6 text-center">
+      <div class="card-header">
+        <h3>Products</h4>
+      </div>
+      <div class="card-body">
+        <p>Inventory of Each Products</p>
+        <p class="value"><%= @total_products %></p>
+        
+    </div>
+  </div>
+</section>
