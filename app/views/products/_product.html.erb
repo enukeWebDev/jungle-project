@@ -1,4 +1,10 @@
 <article class="product">
+
+<!-- Add condition to show SOLD OUT for product/s that is out of stock (product.quantity == 0) -->
+  <% if product.quantity == 0 %>
+  <aside class="sold-out"> SOLD OUT! </aside>
+  <% end %>
+  
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
@@ -18,6 +24,9 @@
   </footer>
 
   <aside class="price">
+
+  <!-- Add the humanized_money_with_symbol to format the the Total Price -->
     <%= humanized_money_with_symbol product.price %>
+
   </aside>
 </article>
