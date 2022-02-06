@@ -1,4 +1,9 @@
 class Admin::CategoriesController < ApplicationController
+
+  #  Implement HTTP basic auth as a way of securing the admin/products resource
+
+  http_basic_authenticate_with name: ENV["USERNAME"], password: ENV["PASSWORD"]
+  
   def index
     @categories = Category.all
   end
