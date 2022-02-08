@@ -31,29 +31,23 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages_for(:password_confirmation)).to include(match(/match/i))
     end
 
-    # it 'should fail validation when email is NOT unique - email is not case sensitive' do
-    #   existing_user = User.create(
-    #     #@user.attributes.merge(
-    #       name: 'Er Nuq',
-    #       email: 'en4@gmail.com',
-    #       password: 'dextershow',
-    #       password_confirmation: 'dextershow',    
-    #   )
-    #   existing_user.save
-    #   expect(existing_user).to_not be_valid
-    # #   puts (existing_user.errors.full_messages)
-    # #  expect(existing_user.errors.full_messages_for(:email)).to include(match(/taken/i))
-
-    
-    # end
+    it 'should fail validation when email is NOT unique - email is not case sensitive' do
+      existing_user = User.create(
+        @user.attributes.merge(
+          email: 'angel@batista.com',
+          password: 'dextershow',
+          password_confirmation: 'dextershow',   
+      )
+    )
+      expect(existing_user).to_not be_valid
+    end
 
     it 'should fail validation when email is NOT enter' do
       @user.email = nil
       expect(@user).to_not be_valid
       expect(@user.errors.full_messages_for(:email)).to include(match(/blank/i))
     end
-
-    
+  
   end
 end
 
