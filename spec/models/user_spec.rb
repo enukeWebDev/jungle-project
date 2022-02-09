@@ -32,14 +32,15 @@ RSpec.describe User, type: :model do
     end
 
     it 'should fail validation when email is NOT unique - email is not case sensitive' do
-      existing_user = User.create(
-        @user.attributes.merge(
+      @user = User.create(
+        # @user.attributes.merge(
           email: 'angel@batista.com',
           password: 'dextershow',
           password_confirmation: 'dextershow',   
-      )
+      # )
     )
-      expect(existing_user).to_not be_valid
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages_for(:email))
     end
 
     it 'should fail validation when email is NOT enter' do
@@ -47,7 +48,52 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
       expect(@user.errors.full_messages_for(:email)).to include(match(/blank/i))
     end
-  
+
+    it 'should fail validation when name (first & last name) is NOT enter' do
+      @user.name = nil
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages_for(:name)).to include(match(/blank/i))
+    end
+
+
+    it 'should fail validation when password is too short' do
+      @user.password = 'no'
+      @user.password_confirmation = 'no'
+      expect(@user).to_not be_valid
+      expect(@user.errors.full_messages_for(:password)).to include("Password is too short (minimum is 3 characters)" )
+    end
+
   end
+
+
+     
+    describe '.authenticate_with_credentials' do
+      before(:each) do
+        @existing_user = User.create(
+          name: 'existing user',
+          email: 'angel@batista.com',
+          password: 'dextershow',
+          password_confirmation: 'dextershow',
+        )
+      end
+
+      
+      context 'with valid credentials' do
+        it 'returns the user with valid credentials' do
+          expect(User.authenticate_with_credentials('angel@batista.com', 'dextershow')).to eq(@existing_user)
+        end
+      end
+
+        context 'with invalid credentials' do
+          it 'returns false when email does not exist' do
+            expect(!!User.authenticate_with_credentials('ngel@batista.com', 'dextershow')).to be false
+          end
+
+          # This is failing
+          it 'returns false when password is incorrect' do
+            expect(!!User.authenticate_with_credentials('angel@batista.com', 'dextershow12')).to be false
+          end
+        end
+    end
 end
 
