@@ -14,14 +14,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
-  #validates :password, length: { minimum: 3 }
   validates :password_confirmation, presence: true
   validates :password, presence: true, length: {minimum: 3}
 
-  
-
 end
-# validates_uniqueness_of :email, :case_sensitive => false
-# validates :name, presence: true
-# validates :password, presence: true, length: {minimum: 3}
-# validates :password_confirmation, presence: true

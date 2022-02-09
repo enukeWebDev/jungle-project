@@ -31,13 +31,10 @@ RSpec.describe Product, type: :model do
       @product = category.products.new(
       name: 'Air Jordan 11',
       category: @category,
-      # price: '3500.50',
       quantity: 2,
     )
-      # @product.price = nil
       expect(@product).to_not be_valid
     end
-
 
     it 'should fail validation if quantity field is missing' do
       category = Category.create(name: 'shoes')

@@ -14,7 +14,6 @@ RSpec.describe User, type: :model do
       )
     end
 
-
     it 'should validate successfully whe the user information is valid' do
       expect(@user).to be_valid
     end
@@ -33,11 +32,9 @@ RSpec.describe User, type: :model do
 
     it 'should fail validation when email is NOT unique - email is not case sensitive' do
       @user = User.create(
-        # @user.attributes.merge(
           email: 'angel@batista.com',
           password: 'dextershow',
           password_confirmation: 'dextershow',   
-      # )
     )
       expect(@user).to_not be_valid
       expect(@user.errors.full_messages_for(:email))
@@ -55,7 +52,6 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages_for(:name)).to include(match(/blank/i))
     end
 
-
     it 'should fail validation when password is too short' do
       @user.password = 'no'
       @user.password_confirmation = 'no'
@@ -65,8 +61,6 @@ RSpec.describe User, type: :model do
 
   end
 
-
-     
     describe '.authenticate_with_credentials' do
       before(:each) do
         @existing_user = User.create(
