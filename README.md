@@ -12,8 +12,6 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 4. !["add category"](https://github.com/enukeWebDev/jungle-project/blob/master/app/docs/Add-Category.png?raw=true)
 
-5. !["add category1"](https://github.com/enukeWebDev/jungle-project/blob/master/app/docs/Add_Category1.png?raw=true)
-
 
 ## Additional Steps for Apple M1 Machines
 
