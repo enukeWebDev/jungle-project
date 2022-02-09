@@ -2,6 +2,19 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+## Some Screenshots of the Project After Completion
+
+1. !["dashboard"](https://github.com/enukeWebDev/jungle-project/blob/master/app/docs/Dashboard.png?raw=true)
+
+2. !["sold out"](https://github.com/enukeWebDev/jungle-project/blob/master/app/docs/Sold_Out.png?raw=true)
+
+3. !["admin security"](https://github.com/enukeWebDev/jungle-project/blob/master/app/docs/Admin-Security.png?raw=true)
+
+4. !["add category"](https://github.com/enukeWebDev/jungle-project/blob/master/app/docs/Add-Category.png?raw=true)
+
+5. !["add category1"](https://github.com/enukeWebDev/jungle-project/blob/master/app/docs/Add_Category1.png?raw=true)
+
+
 ## Additional Steps for Apple M1 Machines
 
 1. Make sure that you are runnning Ruby 2.6.6 (`ruby -v`)
