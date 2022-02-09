@@ -77,7 +77,6 @@ RSpec.describe User, type: :model do
         )
       end
 
-      
       context 'with valid credentials' do
         it 'returns the user with valid credentials' do
           expect(User.authenticate_with_credentials('angel@batista.com', 'dextershow')).to eq(@existing_user)
@@ -89,7 +88,6 @@ RSpec.describe User, type: :model do
             expect(!!User.authenticate_with_credentials('ngel@batista.com', 'dextershow')).to be false
           end
 
-          # This is failing
           it 'returns false when password is incorrect' do
             expect(!!User.authenticate_with_credentials('angel@batista.com', 'dextershow12')).to be false
           end
